@@ -24,9 +24,17 @@ public class DateContext {
         setTypeAndValue();
         ClockType clockType = ClockType.valueOf(type);
 
-        if (clockType.is(fixed)) toFixedDate();
-        else if (clockType.is(current)) toCurrentDate();
-        else toCurrentDate();
+        if (clockType.is(fixed)) {
+            toFixedDate();
+            return;
+        }
+
+        if (clockType.is(current)) {
+            toCurrentDate();
+            return;
+        }
+
+        toCurrentDate();
     }
 
     private static void setTypeAndValue() {
